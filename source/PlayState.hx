@@ -1776,6 +1776,10 @@ class PlayState extends MusicBeatState
 		if (loadRep)
 			replayTxt.cameras = [camHUD];
 
+		#if android
+		addAndroidControls();
+		#end
+
 		// if (SONG.song == 'South')
 		// FlxG.camera.alpha = 0.7;
 		// UI_camera.zoom = 1;
@@ -2481,6 +2485,9 @@ class PlayState extends MusicBeatState
 
 	function startSong():Void
 	{
+		#if android
+		androidc.visible = true;
+		#end
 		startingSong = false;
 		songStarted = true;
 		previousFrameTime = FlxG.game.ticks;
