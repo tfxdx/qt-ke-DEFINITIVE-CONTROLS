@@ -77,7 +77,6 @@ using StringTools;
 
 class PlayState extends MusicBeatState
 {
-	var _vpad:FlxVirtualPad;
 	public static var curStage:String = '';
 	public static var SONG:SwagSong;
 	public static var isStoryMode:Bool = false;
@@ -1848,10 +1847,8 @@ class PlayState extends MusicBeatState
 
 		#if android
 		addAndroidControls();
-		_vpad = new FlxVirtualPad(NONE, A);
-	   _vpad.cameras = [camHUD];
-			this.add(_vpad);
         #end
+
 		deathBySawBlade = false; //Some reason, it keeps it's value after death, so this forces itself to reset to false.
 
 		super.create();
