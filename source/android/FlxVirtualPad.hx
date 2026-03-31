@@ -12,7 +12,6 @@ import flixel.graphics.FlxGraphic;
 class FlxVirtualPad extends FlxSpriteGroup
 {
 	//Actions
-	public var buttonSpace:FlxButton;
 	public var buttonA:FlxButton;
 	public var buttonB:FlxButton;
 	public var buttonC:FlxButton;
@@ -48,7 +47,6 @@ class FlxVirtualPad extends FlxSpriteGroup
 		actions = new FlxSpriteGroup();
 		actions.scrollFactor.set();
 
-		buttonSpace = new FlxButton(0, 0);
         buttonA = new FlxButton(0, 0);
         buttonB = new FlxButton(0, 0);
         buttonC = new FlxButton(0, 0);
@@ -108,8 +106,6 @@ class FlxVirtualPad extends FlxSpriteGroup
 
 		switch (Action)
 		{
-			case SPACE:
-				actions.add(add(buttonSpace = createButton(FlxG.width - 44 * 3, FlxG.height - 45 * 3, 44 * 3, 45 * 3, "space")));
 			case A:
 				actions.add(add(buttonA = createButton(FlxG.width - 44 * 3, FlxG.height - 45 * 3, 44 * 3, 45 * 3, "a")));
             case B:
@@ -189,7 +185,6 @@ class FlxVirtualPad extends FlxSpriteGroup
 
 		dPad = null;
 		actions = null;
-		buttonSpace = null;
 		buttonA = null;
 		buttonB = null;
 		buttonC = null;
@@ -226,7 +221,6 @@ enum FlxDPadMode
 
 enum FlxActionMode
 {
-	SPACE;
 	A;
 	B;
 	D;
