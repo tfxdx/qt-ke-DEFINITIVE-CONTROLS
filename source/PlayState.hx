@@ -23,9 +23,6 @@ import lime.app.Application;
 import lime.media.AudioContext;
 import lime.media.AudioManager;
 import openfl.Lib;
-#if android
-import android.FlxVirtualPad;
-#end
 import Section.SwagSection;
 import Song.SwagSong;
 import WiggleEffect.WiggleEffectType;
@@ -1845,10 +1842,6 @@ class PlayState extends MusicBeatState
 		if (!loadRep)
 			rep = new Replay("na");
 
-		#if android
-		addAndroidControls();
-        #end
-
 		deathBySawBlade = false; //Some reason, it keeps it's value after death, so this forces itself to reset to false.
 
 		super.create();
@@ -2029,9 +2022,6 @@ class PlayState extends MusicBeatState
 
 	function startCountdown():Void
 	{
-		#if android
-		androidc.visible = true;
-		#end
 		inCutscene = false;
 
 		generateStaticArrows(0);
