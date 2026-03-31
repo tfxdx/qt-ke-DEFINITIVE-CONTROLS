@@ -858,7 +858,7 @@ class PlayState extends MusicBeatState
 			case 'termination': //Seperated the two so terminate can load quicker (doesn't need to load in the attack animations and stuff)
 			{
 				#if android
-				addVirtualPad(NONE, A);
+				addVirtualPad(NONE, C);
 				#end
 				defaultCamZoom = 0.8125;
 				
