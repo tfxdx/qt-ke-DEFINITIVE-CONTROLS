@@ -9,6 +9,8 @@ import flixel.ui.FlxButton;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.graphics.FlxGraphic;
 
+using StringTools;
+
 class FlxVirtualPad extends FlxSpriteGroup
 {
 	//Actions
