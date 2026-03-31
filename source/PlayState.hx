@@ -1778,6 +1778,7 @@ class PlayState extends MusicBeatState
 
 		#if android
 		addAndroidControls();
+		androidc.visible = true;
 		#end
 
 		// if (SONG.song == 'South')
@@ -2485,9 +2486,6 @@ class PlayState extends MusicBeatState
 
 	function startSong():Void
 	{
-		#if android
-		androidc.visible = true;
-		#end
 		startingSong = false;
 		songStarted = true;
 		previousFrameTime = FlxG.game.ticks;
