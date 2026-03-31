@@ -82,10 +82,6 @@ class Main extends Sprite
 		}
 		#end
 
-		#if !debug
-		initialState = TitleState;
-		#end
-
 		game = new FlxGame(gameWidth, gameHeight, #if mobile CopyState.checkExistingFiles() ? initialState : CopyState #else initialState #end, zoom, framerate, framerate, skipSplash, startFullscreen);
 
 		addChild(game);
