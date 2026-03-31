@@ -166,8 +166,7 @@ class FlxVirtualPad extends FlxSpriteGroup
 		return Paths.getPackerAtlas('androidcontrols/virtualpad');
 	}
 
-	override public function destroy():Void
-	{
+	override public function destroy():Void {
 		super.destroy();
 
 		dPad = FlxDestroyUtil.destroy(dPad);
@@ -175,49 +174,47 @@ class FlxVirtualPad extends FlxSpriteGroup
 
 		dPad = null;
 		actions = null;
+
 		buttonA = null;
 		buttonB = null;
 		buttonC = null;
 		buttonD = null;
 		buttonE = null;
+		buttonF = null;
+		buttonG = null;
+		buttonS = null;
 
-		buttonV = null;	
-		buttonX = null;	
+		buttonV = null;
+		buttonX = null;
 		buttonY = null;
-		buttonZ	= null;	
+		buttonZ = null;
 
 		buttonLeft = null;
 		buttonUp = null;
 		buttonDown = null;
 		buttonRight = null;
-
-		buttonLeft2 = null;
-		buttonUp2 = null;
-		buttonDown2 = null;
-		buttonRight2 = null;
 	}
 }
 
-enum FlxDPadMode
-{
+enum FlxDPadMode {
 	UP_DOWN;
 	LEFT_RIGHT;
 	UP_LEFT_RIGHT;
 	FULL;
-	RIGHT_FULL;
-	DUO;
 	NONE;
 }
 
-enum FlxActionMode
-{
+enum FlxActionMode {
 	A;
 	B;
 	D;
 	A_B;
+	B_X;
 	A_B_C;
+	A_B_X;
 	A_B_E;
-	A_B_X_Y;	
+	A_B_X_Y;
+	A_B_C_X;
 	A_B_C_X_Y;
 	A_B_C_X_Y_Z;
 	FULL;
