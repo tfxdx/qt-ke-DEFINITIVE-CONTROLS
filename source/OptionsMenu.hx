@@ -35,18 +35,14 @@ class OptionsMenu extends MusicBeatState
 		new OptionCatagory("Appearence", [
 			new SongPositionOption("Show the songs current position (as a bar)"),
 			new DownscrollOption("Change the layout of the strumline."),
-			#if desktop
 			new RainbowFPSOption("Make the FPS Counter Rainbow (Only works with the FPS Counter toggeled on)"),
-			#end
 			new AccuracyOption("Display accuracy information."),
 			new NPSDisplayOption("Shows your current Notes Per Second.")
 		]),
 		
 		new OptionCatagory("Misc", [
-			#if desktop
 			new FPSOption("Toggle the FPS Counter"),
 			new ReplayOption("View replays"),
-			#end
 			new WatermarkOption("Turn off all watermarks from the engine."),
 			new QTOptimiseOption("Disables some visual elements to help performance in 3rd and 4th song.")
 			
