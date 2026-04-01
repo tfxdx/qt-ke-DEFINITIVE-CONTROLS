@@ -1,83 +1,124 @@
 package android;
 
-import flixel.graphics.frames.FlxAtlasFrames;
-import flixel.graphics.FlxGraphic;
+import flixel.util.FlxGradient;
 import flixel.group.FlxSpriteGroup;
-import flixel.tweens.FlxTween;
-import flixel.tweens.FlxEase;
-import flixel.ui.FlxButton;
+import flixel.util.FlxDestroyUtil;
+import mobile.flixel.FlxButton;
 import flixel.FlxSprite;
+import flixel.FlxG;
+import openfl.display.BitmapData;
+import openfl.display.Shape;
 
-class FlxHitbox extends FlxSpriteGroup
-{
+class FlxHitbox extends FlxSpriteGroup {
 	public var hitbox:FlxSpriteGroup;
-	public var buttonLeft:FlxButton;
-	public var buttonDown:FlxButton;
-	public var buttonUp:FlxButton;
-	public var buttonRight:FlxButton;
 
-	var hitbox_hint:FlxSprite;
-	
-	public function new()
-	{
+	public var array:Array<FlxButton> = [];
+
+	var hitboxColor:Map<Int, Array<Int>> = [
+		1 => [0xffFFFFFF],
+		2 => [0xffE390E6, 0xffFF0000],
+		3 => [0xffE390E6, 0xffFFFFFF, 0xffFF0000],
+		4 => [0xffE390E6, 0xff00EDFF, 0xff00FF00, 0xffFF0000],
+		5 => [0xffE390E6, 0xff00EDFF, 0xffFFFFFF, 0xff00FF00, 0xffFF0000],
+		6 => [0xffE390E6, 0xff00FF00, 0xffFF0000, 0xffFFFF00, 0xff00EDFF, 0xff0000FF],
+		7 => [0xffE390E6, 0xff00FF00, 0xffFF0000, 0xffFFFFFF, 0xffFFFF00, 0xff00EDFF, 0xff0000FF],
+		8 => [0xffE390E6, 0xff00EDFF, 0xff00FF00, 0xffFF0000, 0xffFFFF00, 0xffBB00FF, 0xffFF0000, 0xff0000FF],
+		9 => [0xffE390E6, 0xff00EDFF, 0xff00FF00, 0xffFF0000, 0xffFFFFFF, 0xffFFFF00, 0xffBB00FF, 0xffFF0000, 0xff0000FF],
+ 	];
+
+	public function new(?type:Int = 3) {
 		super();
-
-		buttonLeft = new FlxButton(0, 0);
-		buttonDown = new FlxButton(0, 0);
-		buttonUp = new FlxButton(0, 0);
-		buttonRight = new FlxButton(0, 0);
-
 		hitbox = new FlxSpriteGroup();
-		hitbox.add(add(buttonLeft = createhitbox(0, "left")));
-		hitbox.add(add(buttonDown = createhitbox(320, "down")));
-		hitbox.add(add(buttonUp = createhitbox(640, "up")));
-		hitbox.add(add(buttonRight = createhitbox(960, "right")));
-
-		hitbox_hint = new FlxSprite(0, 0).loadGraphic(Paths.image('androidcontrols/hitbox_hint'));
-		hitbox_hint.alpha = 0.75;
-		add(hitbox_hint);
+		
+		var keyCount:Int = type + 1;
+		var hitboxWidth:Int = Math.floor(FlxG.width / keyCount);
+		for (i in 0 ... keyCount) {
+			hitbox.add(add(array[i] = createhitbox(hitboxWidth * i, 0, hitboxWidth, FlxG.height, hitboxColor[keyCount][i])));
+      array[i].stringIDs = ['${type}_key_${keyCount}'];
+		}
 	}
 
-	public function createhitbox(hitboxposeX:Float, frames:String) {
-		var hitboxframes = getHitboxFrames().getByName(frames);
-		var graphic:FlxGraphic = FlxGraphic.fromFrame(hitboxframes);
-		var button = new FlxButton(hitboxposeX, 0);
-		button.loadGraphic(graphic);
-		button.alpha = 0;
+	public function createhitbox(x:Float = 0, y:Float = 0, width:Int, height:Int, color:Int) {
 
-		button.onDown.callback = function (){
-			FlxTween.num(0, 0.75, 0.075, {ease:FlxEase.circInOut}, function(alpha:Float){ 
-				button.alpha = alpha;
-			});
-		};
+		var hintTween:FlxTween = null;
+		var button:FlxButton = new FlxButton(x, y);
+		button.loadGraphic(createHintGraphic(width, height));
+		button.color = color;
+		button.updateHitbox();
+		button.alpha = 0.00001;
 
-		button.onUp.callback = function (){
-			FlxTween.num(0.75, 0, 0.1, {ease:FlxEase.circInOut}, function(alpha:Float){ 
-				button.alpha = alpha;
-			});
+		if (!ClientPrefs.data.hideHitboxHints)
+		{
+			button.onDown.callback = function()
+			{
+				if (hintTween != null)
+					hintTween.cancel();
+
+				hintTween = FlxTween.tween(button, {alpha: ClientPrefs.data.controlsAlpha}, ClientPrefs.data.controlsAlpha / 100, {
+					ease: FlxEase.circInOut,
+					onComplete: function(twn:FlxTween)
+					{
+						hintTween = null;
+					}
+				});
+			}
+			button.onUp.callback = function()
+			{
+				if (hintTween != null)
+					hintTween.cancel();
+
+				hintTween = FlxTween.tween(button, {alpha: 0.00001}, ClientPrefs.data.controlsAlpha / 10, {
+					ease: FlxEase.circInOut,
+					onComplete: function(twn:FlxTween)
+					{
+						hintTween = null;
+					}
+				});
+			}
+			button.onOut.callback = function()
+			{
+				if (hintTween != null)
+					hintTween.cancel();
+
+				hintTween = FlxTween.tween(button, {alpha: 0.00001}, ClientPrefs.data.controlsAlpha / 10, {
+					ease: FlxEase.circInOut,
+					onComplete: function(twn:FlxTween)
+					{
+						hintTween = null;
+					}
+				});
+			}
 		}
-
-		button.onOut.callback = function (){
-			FlxTween.num(button.alpha, 0, 0.2, {ease:FlxEase.circInOut}, function(alpha:Float){ 
-				button.alpha = alpha;
-			});
-		}
-
+		#if FLX_DEBUG
+		hint.ignoreDrawDebug = true;
+		#end
 		return button;
 	}
 
-	public static function getHitboxFrames():FlxAtlasFrames
-	{
-		return Paths.getSparrowAtlas('androidcontrols/hitbox');
-	}
 
-	override public function destroy():Void
-	{
+	override public function destroy():Void {
 		super.destroy();
-
-		buttonLeft = null;
-		buttonDown = null;
-		buttonUp = null;
-		buttonRight = null;
+		for (hbox in array) {
+			hbox = null;
+		}
+	}
+	function createHintGraphic(Width:Int, Height:Int):BitmapData
+	{
+		var guh = ClientPrefs.data.controlsAlpha;
+		if (guh >= 0.9)
+			guh = ClientPrefs.data.controlsAlpha - 0.07;
+		var shape:Shape = new Shape();
+		shape.graphics.beginFill(0xFFFFFF);
+		shape.graphics.lineStyle(3, 0xFFFFFF, 1);
+		shape.graphics.drawRect(0, 0, Width, Height);
+		shape.graphics.lineStyle(0, 0, 0);
+		shape.graphics.drawRect(3, 3, Width - 6, Height - 6);
+		shape.graphics.endFill();
+		shape.graphics.beginGradientFill(RADIAL, [0xFFFFFF, FlxColor.TRANSPARENT], [guh, 0], [0, 255], null, null, null, 0.5);
+		shape.graphics.drawRect(3, 3, Width - 6, Height - 6);
+		shape.graphics.endFill();
+		var bitmap:BitmapData = new BitmapData(Width, Height, true, 0);
+		bitmap.draw(shape);
+		return bitmap;
 	}
 }
