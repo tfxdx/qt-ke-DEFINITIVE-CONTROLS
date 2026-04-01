@@ -225,3 +225,4 @@ class CopyState extends MusicBeatState
 		return (maxLoopTimes <= 0);
 	}
 }
+#end
