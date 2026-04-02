@@ -137,10 +137,8 @@ class FlxVirtualPad extends FlxSpriteGroup
 		}
 	}
 
-	public function createButton(x:Float, y:Float, width:Int, height:Int, frames:String, Color:Int = 0xFFFFFF):FlxButton
-	{
+	public function createButton(x:Float, y:Float, width:Int, height:Int, frames:String, Color:Int = 0xFFFFFF):FlxButton {
 		var button = new FlxButton(x, y);
-		var frame = getVirtualInputFrames().getByName(frames);
 		button.frames = FlxTileFrames.fromFrame(getFrames().getByName(frames), FlxPoint.get(width, height));
 		button.resetSizeFromFrame();
 		button.solid = false;
@@ -149,10 +147,6 @@ class FlxVirtualPad extends FlxSpriteGroup
 		button.color = Color;
 		button.alpha = 0.7;
 		button.antialiasing = true;
-		
-		#if FLX_DEBUG
-		button.ignoreDrawDebug = true;
-		#end
 
 		return button;
 	}
@@ -194,14 +188,11 @@ class FlxVirtualPad extends FlxSpriteGroup
 	}
 }
 
-enum FlxDPadMode
-{
+enum FlxDPadMode {
 	UP_DOWN;
 	LEFT_RIGHT;
 	UP_LEFT_RIGHT;
 	FULL;
-	RIGHT_FULL;
-	DUO;
 	NONE;
 }
 
