@@ -85,36 +85,15 @@ class AndroidControls extends FlxSpriteGroup
 
 		switch (mode)
 		{
-			case VIRTUALPAD_LEFT:
-				initControler(0);
-			case VIRTUALPAD_CUSTOM:
-				initControler(1);
-			case DUO:
-				initControler(2);
-			case KEYBOARD:
-				// do nothing
 			case HITBOX:
-				initControler(3);
+				initControler(0);
 		}
 	}
 
 	function initControler(vpadMode:Int) 
 	{
 		switch (vpadMode)
-		{					
-			case 0:
-				vpad = new FlxVirtualPad(FULL, NONE);
-				vpad.alpha = 0.75;
-				add(vpad);			
-			case 1:
-				vpad = new FlxVirtualPad(FULL, NONE);
-				vpad = config.loadcustom(vpad);
-				vpad.alpha = 0.75;
-				add(vpad);	
-			case 2:
-				vpad = new FlxVirtualPad(DUO, NONE);
-				vpad.alpha = 0.75;
-				add(vpad);		
+		{		
 			default:
 				hbox = new FlxHitbox();
 				add(hbox);							
@@ -125,14 +104,6 @@ class AndroidControls extends FlxSpriteGroup
 	public static function getModeFromNumber(modeNum:Int):ControlsGroup {
 		return switch (modeNum)
 		{
-			case 0: 
-				VIRTUALPAD_LEFT;
-			case 1: 
-				VIRTUALPAD_CUSTOM;
-			case 2: 
-				DUO;
-			case 3: 
-				KEYBOARD;
 			default:	
 				HITBOX;
 		}
@@ -140,9 +111,5 @@ class AndroidControls extends FlxSpriteGroup
 }
 
 enum ControlsGroup {
-	VIRTUALPAD_LEFT;
-	VIRTUALPAD_CUSTOM;
-	DUO;
-	KEYBOARD;
 	HITBOX;
 }
