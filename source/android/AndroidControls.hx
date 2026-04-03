@@ -31,20 +31,16 @@ class Config {
 	}
 
 	public function savecustom(_pad:FlxVirtualPad) {
-		if (save.data.buttons == null)
-		{
+		if (save.data.buttons == null) {
 			save.data.buttons = new Array();
 
-			for (buttons in _pad)
-			{
+			for (buttons in _pad) {
 				save.data.buttons.push(FlxPoint.get(buttons.x, buttons.y));
 			}
 		}
-		else
-		{
+		else {
 			var tempCount:Int = 0;
-			for (buttons in _pad)
-			{
+			for (buttons in _pad) {
 				save.data.buttons[tempCount] = FlxPoint.get(buttons.x, buttons.y);
 				tempCount++;
 			}
@@ -66,8 +62,7 @@ class Config {
 	}
 }
 
-class AndroidControls extends FlxSpriteGroup
-{
+class AndroidControls extends FlxSpriteGroup {
 	public var mode:ControlsGroup = HITBOX;
 
 	public var hbox:FlxHitbox;
@@ -75,35 +70,29 @@ class AndroidControls extends FlxSpriteGroup
 
 	var config:Config;
 
-	public function new() 
-	{
+	public function new() {
 		super();
 		
 		config = new Config();
 
 		mode = getModeFromNumber(config.getcontrolmode());
 
-		switch (mode)
-		{
+		switch (mode) {
 			case HITBOX:
 				initControler(0);
 		}
 	}
 
-	function initControler(vpadMode:Int) 
-	{
-		switch (vpadMode)
-		{		
+	function initControler(vpadMode:Int) {
+		switch (vpadMode) {		
 			default:
 				hbox = new FlxHitbox();
 				add(hbox);							
 		}
 	}
 
-
 	public static function getModeFromNumber(modeNum:Int):ControlsGroup {
-		return switch (modeNum)
-		{
+		return switch (modeNum) {
 			default:	
 				HITBOX;
 		}
