@@ -44,6 +44,7 @@ class Main extends Sprite
 		#end
 		Sys.setCwd(StorageUtil.getStorageDirectory());
 		#end
+
 		super();
 
 		if (stage != null)
