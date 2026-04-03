@@ -52,17 +52,16 @@ class StorageUtil
 			&& !AndroidPermissions.getGrantedPermissions().contains('android.permission.READ_MEDIA_IMAGES'))
 			|| (AndroidVersion.SDK_INT < AndroidVersionCode.TIRAMISU
 				&& !AndroidPermissions.getGrantedPermissions().contains('android.permission.READ_EXTERNAL_STORAGE')))
-			CoolUtil.showPopUp('If you accepted the permissions you are all good!' + '\nIf you didn\'t then expect a crash' + '\nPress OK to see what happens',
-				'Notice!');
+			CoolUtil.showPopUp('If you accepted the permissions you are all good!' + '\nIf you didn\'t then expect a crash' + '\nPress OK to see what happens','Notice!');
 
 		try
 		{
-			if (!FileSystem.exists(SUtil.getStorageDirectory()))
-				FileSystem.createDirectory(SUtil.getStorageDirectory());
+			if (!FileSystem.exists(StorageUtil.getStorageDirectory()))
+				FileSystem.createDirectory(StorageUtil.getStorageDirectory());
 		}
 		catch (e:Dynamic)
 		{
-			CoolUtil.showPopUp('Please create directory to\n' + SUtil.getStorageDirectory() + '\nPress OK to close the game', 'Error!');
+			CoolUtil.showPopUp('Please create directory to\n' + StorageUtil.getStorageDirectory() + '\nPress OK to close the game', 'Error!');
 			lime.system.System.exit(1);
 		}
 	}
