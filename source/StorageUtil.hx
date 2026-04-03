@@ -22,11 +22,11 @@ class StorageUtil {
     public static function getStorageDirectory():String {
         return
         #if android
-        Path.addTrailingSlash(AndroidEnvironment.getExternalStorageDirectory() + '/.' + lime.app.Application.current.meta.get('file'))
+        Path.addTrailingSlash(AndroidEnvironment.getExternalStorageDirectory() + '/.' + lime.app.Application.current.meta.get('file'));
         #elseif ios
         LimeSystem.documentsDirectory
         #else
-        Sys.getCwd()
+        Sys.getCwd();
         #end;
     }
 
