@@ -93,7 +93,9 @@ class Main extends Sprite
 		toggleFPS(FlxG.save.data.fps);
 		#end
 
-		#if android FlxG.android.preventDefaultKeys = [BACK]; #end
+		#if android
+		FlxG.android.preventDefaultKeys = [BACK];
+		#end
 	}
 
 	var game:FlxGame;
