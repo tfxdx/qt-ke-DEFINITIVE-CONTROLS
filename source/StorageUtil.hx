@@ -38,13 +38,13 @@ class StorageUtil {
                 'READ_MEDIA_VIDEO',
                 'READ_MEDIA_AUDIO',
                 'READ_MEDIA_VISUAL_USER_SELECTED'
-            ])
+            ]);
         }
         else {
             AndroidPermissions.requestPermissions([
                 'READ_EXTERNAL_STORAGE',
                 'WRITE_EXTERNAL_STORAGE'
-            ])
+            ]);
         }
 
         if (!AndroidEnvironment.isExternalStorageManager()) {
@@ -63,7 +63,7 @@ class StorageUtil {
                 'If you didn\'t then expect a crash\n' +
                 'Press OK to see what happens',
                 'Notice!'
-            )
+            );
         }
 
         try {
