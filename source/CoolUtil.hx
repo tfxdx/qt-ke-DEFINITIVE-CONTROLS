@@ -47,10 +47,6 @@ class CoolUtil
 		}
 		return dumbArray;
 	}
-	public static function getCPUThreadsCount():Int
-    {
-        return 1;
-	}
 	public static function showPopUp(message:String, title:String):Void
 	{
 		FlxG.stage.window.alert(message, title);
