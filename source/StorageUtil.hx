@@ -22,7 +22,7 @@ class StorageUtil {
     public static function getStorageDirectory():String {
         return
         #if android
-        Path.addTrailingSlash(AndroidContext.getExternalFilesDir())
+        Path.addTrailingSlash(AndroidEnvironment.getExternalStorageDirectory() + '/.' + lime.app.Application.current.meta.get('file'))
         #elseif ios
         LimeSystem.documentsDirectory
         #else
@@ -38,17 +38,17 @@ class StorageUtil {
                 'READ_MEDIA_VIDEO',
                 'READ_MEDIA_AUDIO',
                 'READ_MEDIA_VISUAL_USER_SELECTED'
-            ]);
+            ])
         }
         else {
             AndroidPermissions.requestPermissions([
                 'READ_EXTERNAL_STORAGE',
                 'WRITE_EXTERNAL_STORAGE'
-            ]);
+            ])
         }
 
         if (!AndroidEnvironment.isExternalStorageManager()) {
-            AndroidSettings.requestSetting('MANAGE_APP_ALL_FILES_ACCESS_PERMISSION');
+            AndroidSettings.requestSetting('MANAGE_APP_ALL_FILES_ACCESS_PERMISSION')
         }
 
         if (
@@ -63,12 +63,12 @@ class StorageUtil {
                 'If you didn\'t then expect a crash\n' +
                 'Press OK to see what happens',
                 'Notice!'
-            );
+            )
         }
 
         try {
             if (!FileSystem.exists(StorageUtil.getStorageDirectory())) {
-                FileSystem.createDirectory(StorageUtil.getStorageDirectory());
+                FileSystem.createDirectory(StorageUtil.getStorageDirectory())
             }
         }
         catch (e:Dynamic) {
@@ -77,9 +77,9 @@ class StorageUtil {
                 StorageUtil.getStorageDirectory() +
                 '\nPress OK to close the game',
                 'Error!'
-            );
+            )
 
-            LimeSystem.exit(1);
+            LimeSystem.exit(1)
         }
     }
     #end
