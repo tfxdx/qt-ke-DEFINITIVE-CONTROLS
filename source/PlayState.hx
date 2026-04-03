@@ -3134,7 +3134,7 @@ class PlayState extends MusicBeatState
 			scoreTxt.text = "Suggested Offset: " + offsetTest;
 
 		}
-		if (FlxG.keys.justPressed.ENTER) //Modified so that enter can skip the thanks for playing screen.
+		if (FlxG.keys.justPressed.ENTER #if android || FlxG.android.justReleased.BACK #end) //Modified so that enter can skip the thanks for playing screen.
 		{
 			if(startedCountdown && canPause){
 				persistentUpdate = false;
