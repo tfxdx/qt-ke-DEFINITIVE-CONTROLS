@@ -271,7 +271,7 @@ class Controls extends FlxActionSet
 	}
 	#end
 
-	#if android
+	#if mobile
 	public var trackedinputs:Array<FlxActionInput> = [];	
 
 	public function addbutton(action:FlxActionDigital, button:FlxButton, state:FlxInputState) 
@@ -315,29 +315,11 @@ class Controls extends FlxActionSet
 		{
 			case A:
 				inline forEachBound(Control.ACCEPT, (action, state) -> addbutton(action, virtualPad.buttonA, state));
-                        case B:
+            case B:
 				inline forEachBound(Control.BACK, (action, state) -> addbutton(action, virtualPad.buttonB, state));
-			case D:
-                                //nothing				
 			case A_B:
 				inline forEachBound(Control.ACCEPT, (action, state) -> addbutton(action, virtualPad.buttonA, state));
 				inline forEachBound(Control.BACK, (action, state) -> addbutton(action, virtualPad.buttonB, state));
-			case A_B_C:
-				inline forEachBound(Control.ACCEPT, (action, state) -> addbutton(action, virtualPad.buttonA, state));
-				inline forEachBound(Control.BACK, (action, state) -> addbutton(action, virtualPad.buttonB, state));					
-			case A_B_E:
-				inline forEachBound(Control.ACCEPT, (action, state) -> addbutton(action, virtualPad.buttonA, state));
-				inline forEachBound(Control.BACK, (action, state) -> addbutton(action, virtualPad.buttonB, state));	
-			case A_B_X_Y:
-				inline forEachBound(Control.ACCEPT, (action, state) -> addbutton(action, virtualPad.buttonA, state));
-				inline forEachBound(Control.BACK, (action, state) -> addbutton(action, virtualPad.buttonB, state));		
-			case A_B_C_X_Y:
-				inline forEachBound(Control.ACCEPT, (action, state) -> addbutton(action, virtualPad.buttonA, state));
-				inline forEachBound(Control.BACK, (action, state) -> addbutton(action, virtualPad.buttonB, state));	
-                        case A_B_C_X_Y_Z:
-                                //nothing
-                        case FULL:
-                                //nothing
 			case NONE:
 		}
 	}	
@@ -353,12 +335,13 @@ class Controls extends FlxActionSet
 
 				var x = Tinputs.length;
 				while (x-- > 0)
-					if (Tinputs[x] == input)
-						action.remove(input);
+				if (Tinputs[x] == input)
+					action.remove(input);
 			}
 		}
 	}	
-	#end		
+	#end
+
 	override function update()
 	{
 		super.update();
