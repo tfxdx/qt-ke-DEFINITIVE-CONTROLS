@@ -13,7 +13,7 @@ class Config {
 
 	public function new() {
 		save = new FlxSave();
-		save.bind("saveconrtol");
+		save.bind("savecontrol");
 	}
 
 	public function getcontrolmode():Int {
