@@ -107,6 +107,10 @@ class GameplayCustomizeState extends MusicBeatState
 
         FlxG.mouse.visible = true;
 
+		#if android
+		addVirtualPad(NONE, B);
+		addPadCamera();
+		#end
     }
 
     override function update(elapsed:Float) {
