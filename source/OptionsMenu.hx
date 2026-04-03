@@ -23,7 +23,7 @@ class OptionsMenu extends MusicBeatState
 		new OptionCatagory("Gameplay", [
 			new DFJKOption(controls),
 			new Judgement("Customize your Hit Timings (LEFT or RIGHT)"),
-			#if desktop
+			#if (desktop || mobile)
 			new FPSCapOption("Cap your FPS (Left for -10, Right for +10. SHIFT to go faster)"),
 			#end
 			new ScrollSpeedOption("Change your scroll speed (Left for -0.1, right for +0.1. If its at 1, it will be chart dependent)"),
@@ -34,7 +34,7 @@ class OptionsMenu extends MusicBeatState
 		new OptionCatagory("Appearence", [
 			new SongPositionOption("Show the songs current position (as a bar)"),
 			new DownscrollOption("Change the layout of the strumline."),
-			#if desktop
+			#if (desktop || mobile)
 			new RainbowFPSOption("Make the FPS Counter Rainbow (Only works with the FPS Counter toggeled on)"),
 			#end
 			new AccuracyOption("Display accuracy information."),
@@ -42,7 +42,7 @@ class OptionsMenu extends MusicBeatState
 		]),
 		
 		new OptionCatagory("Misc", [
-			#if desktop
+			#if (desktop || mobile)
 			new FPSOption("Toggle the FPS Counter"),
 			new ReplayOption("View replays"),
 			#end
