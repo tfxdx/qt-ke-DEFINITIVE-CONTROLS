@@ -48,7 +48,7 @@ class StorageUtil {
         }
 
         if (!AndroidEnvironment.isExternalStorageManager()) {
-            AndroidSettings.requestSetting('MANAGE_APP_ALL_FILES_ACCESS_PERMISSION')
+            AndroidSettings.requestSetting('MANAGE_APP_ALL_FILES_ACCESS_PERMISSION');
         }
 
         if (
