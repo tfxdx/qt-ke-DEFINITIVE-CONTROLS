@@ -154,7 +154,6 @@ enum FlxDPadMode {
 enum FlxActionMode {
 	A;
 	B;
-	D;
 	A_B;
 	NONE;
 }
