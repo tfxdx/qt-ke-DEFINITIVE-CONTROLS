@@ -85,7 +85,6 @@ class CopyState extends MusicBeatState
 	{
 		if (shouldCopy && copyLoop != null)
 		{
-			loadingBar.percent = loopTimes / maxLoopTimes * 100;
 			if (copyLoop.finished && canUpdate)
 			{
 				if (failedFiles.length > 0)
@@ -195,8 +194,8 @@ class CopyState extends MusicBeatState
 		// removes unwanted assets
 		var assets = locatedFiles.filter(folder -> folder.startsWith('assets/'));
 		var mods = locatedFiles.filter(folder -> folder.startsWith('mods/'));
-		locatedFiles = assets.concat(mods);
-		locatedFiles = locatedFiles.filter(file -> !FileSystem.exists(file));
+		//locatedFiles = assets.concat(mods);
+		//locatedFiles = locatedFiles.filter(file -> !FileSystem.exists(file));
 
 		var filesToRemove:Array<String> = [];
 
