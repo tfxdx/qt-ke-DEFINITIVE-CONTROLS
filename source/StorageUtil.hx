@@ -77,9 +77,9 @@ class StorageUtil {
                 StorageUtil.getStorageDirectory() +
                 '\nPress OK to close the game',
                 'Error!'
-            )
+            );
 
-            LimeSystem.exit(1)
+            LimeSystem.exit(1);
         }
     }
     #end
