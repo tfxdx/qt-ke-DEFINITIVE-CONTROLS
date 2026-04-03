@@ -274,25 +274,21 @@ class Controls extends FlxActionSet
 	#if mobile
 	public var trackedinputs:Array<FlxActionInput> = [];	
 
-	public function addbutton(action:FlxActionDigital, button:FlxButton, state:FlxInputState) 
-	{
+	public function addbutton(action:FlxActionDigital, button:FlxButton, state:FlxInputState) {
 		var input = new FlxActionInputDigitalIFlxInput(button, state);
 		trackedinputs.push(input);
 		action.add(input);
 	}
 
-	public function setHitBox(hitbox:FlxHitbox) 
-	{
+	public function setHitBox(hitbox:FlxHitbox) {
 		inline forEachBound(Control.UP, (action, state) -> addbutton(action, hitbox.buttonUp, state));
 		inline forEachBound(Control.DOWN, (action, state) -> addbutton(action, hitbox.buttonDown, state));
 		inline forEachBound(Control.LEFT, (action, state) -> addbutton(action, hitbox.buttonLeft, state));
 		inline forEachBound(Control.RIGHT, (action, state) -> addbutton(action, hitbox.buttonRight, state));	
 	}
 	
-	public function setVirtualPad(virtualPad:FlxVirtualPad, ?DPad:FlxDPadMode, ?Action:FlxActionMode) 
-	{
-		switch (DPad)
-		{
+	public function setVirtualPad(virtualPad:FlxVirtualPad, ?DPad:FlxDPadMode, ?Action:FlxActionMode) {
+		switch (DPad) {
 			case UP_DOWN:
 				inline forEachBound(Control.UP, (action, state) -> addbutton(action, virtualPad.buttonUp, state));
 				inline forEachBound(Control.DOWN, (action, state) -> addbutton(action, virtualPad.buttonDown, state));
@@ -311,8 +307,7 @@ class Controls extends FlxActionSet
 			case NONE:
 		}
 
-		switch (Action)
-		{
+		switch (Action) {
 			case A:
 				inline forEachBound(Control.ACCEPT, (action, state) -> addbutton(action, virtualPad.buttonA, state));
             case B:
@@ -325,12 +320,10 @@ class Controls extends FlxActionSet
 	}	
 
 	public function removeFlxInput(Tinputs) {
-		for (action in this.digitalActions)
-		{
+		for (action in this.digitalActions) {
 			var i = action.inputs.length;
 			
-			while (i-- > 0)
-			{
+			while (i-- > 0) {
 				var input = action.inputs[i];
 
 				var x = Tinputs.length;
