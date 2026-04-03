@@ -68,7 +68,7 @@ class StorageUtil {
 
         try {
             if (!FileSystem.exists(StorageUtil.getStorageDirectory())) {
-                FileSystem.createDirectory(StorageUtil.getStorageDirectory())
+                FileSystem.createDirectory(StorageUtil.getStorageDirectory());
             }
         }
         catch (e:Dynamic) {
