@@ -403,6 +403,7 @@ class DialogueBox extends FlxSpriteGroup
 		{
 			if (touch.justPressed)
 			{
+				startDialogue();
 				dialogueStarted = true;
 			}
 		}
