@@ -54,13 +54,13 @@ class TitleState extends MusicBeatState
 		//Note to self though, this will break "destroyOnNotUse" so remember to disable persist on any graphics you want to destroy when not being used.
 
 		#if polymod
-		polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
+		//polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
 		#end
 		
-		#if sys
+		/*#if sys
 		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays"))
 			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");
-		#end
+		#end*/
 
 		@:privateAccess
 		{
