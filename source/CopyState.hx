@@ -57,7 +57,7 @@ class CopyState extends MusicBeatState
 
 		add(new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0xfffde871));
 
-		loadingImage = new FlxSprite(0, 0, Paths.image('menuDesat'));
+		loadingImage = new FlxSprite(0, 0, Paths.image('menuBG'));
 		loadingImage.setGraphicSize(0, FlxG.height);
 		loadingImage.updateHitbox();
 		loadingImage.screenCenter();
@@ -202,9 +202,9 @@ class CopyState extends MusicBeatState
 
 		// removes unwanted assets
 		var assets = locatedFiles.filter(folder -> folder.startsWith('assets/'));
-		//var mods = locatedFiles.filter(folder -> folder.startsWith('mods/'));
-		//locatedFiles = assets.concat(mods);
-		//locatedFiles = locatedFiles.filter(file -> !FileSystem.exists(file));
+		var mods = locatedFiles.filter(folder -> folder.startsWith('content/'));
+		locatedFiles = assets.concat(mods);
+		locatedFiles = locatedFiles.filter(file -> !FileSystem.exists(file));
 
 		var filesToRemove:Array<String> = [];
 
