@@ -108,13 +108,15 @@ class CopyState extends MusicBeatState
 		super.update(elapsed);
 	}
 
-	public function copyAsset(file:String)
+	public function copyAsset()
 	{
+		var file = locatedFiles[loopTimes];
+		loopTimes++;
 		if (!FileSystem.exists(file))
 		{
 			var directory = Path.directory(file);
 			if (!FileSystem.exists(directory))
-				FileSystem.createDirectory(directory);
+				SUtil.mkDirs(directory);
 			try
 			{
 				if (OpenFLAssets.exists(getFile(file)))
