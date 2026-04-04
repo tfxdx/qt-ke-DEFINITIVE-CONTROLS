@@ -1,5 +1,6 @@
 package;
 
+#if mobile
 import lime.system.System as LimeSystem;
 import haxe.io.Path;
 import haxe.Exception;
@@ -20,24 +21,6 @@ class StorageUtil {
     #if sys
 	public static function getStorageDirectory():String
 		return #if android haxe.io.Path.addTrailingSlash(AndroidEnvironment.getExternalStorageDirectory() + '/.' + lime.app.Application.current.meta.get('file')) #elseif ios lime.system.System.documentsDirectory #else Sys.getCwd() #end;
-
-	public static function saveContent(fileName:String, fileData:String, ?alert:Bool = true):Void
-	{
-		try
-		{
-			if (!FileSystem.exists('saves'))
-				FileSystem.createDirectory('saves');
-
-			File.saveContent('saves/$fileName', fileData);
-			if (alert)
-				CoolUtil.showPopUp('$fileName has been saved.', "Success!");
-		}
-		catch (e:Dynamic)
-			if (alert)
-				CoolUtil.showPopUp('$fileName couldn\'t be saved.\n(${e.message})', "Error!")
-			else
-				trace('$fileName couldn\'t be saved. (${e.message})');
-	}
 	#if android
 	public static function requestPermissions():Void
 	{
@@ -70,3 +53,4 @@ class StorageUtil {
 	#end
 	#end
 }
+#end
