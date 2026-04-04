@@ -1,6 +1,5 @@
 package;
 
-#if mobile
 import lime.system.System as LimeSystem;
 import haxe.io.Path;
 import haxe.Exception;
@@ -53,4 +52,3 @@ class StorageUtil {
 	#end
 	#end
 }
-#end
