@@ -403,7 +403,7 @@ class DialogueBox extends FlxSpriteGroup
 		{
 			if (touch.justPressed)
 			{
-				FlxG.keys.justPressed.ANY
+				FlxG.keys.justPressed.ANY;
 			}
 		}
 		#end
