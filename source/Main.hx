@@ -38,14 +38,14 @@ class Main extends Sprite
 
 	public function new()
 	{
+		super();
+
 		#if mobile
 		#if android
 		StorageUtil.requestPermissions();
 		#end
 		Sys.setCwd(StorageUtil.getStorageDirectory());
 		#end
-
-		super();
 
 		if (stage != null)
 		{
