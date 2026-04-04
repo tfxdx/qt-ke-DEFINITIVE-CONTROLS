@@ -398,17 +398,7 @@ class DialogueBox extends FlxSpriteGroup
 			dialogueStarted = true;
 		}
 
-		#if mobile
-		for (touch in FlxG.touches.list)
-		{
-			if (touch.justPressed)
-			{
-				FlxG.keys.justPressed.ANY;
-			}
-		}
-		#end
-
-		if (FlxG.keys.justPressed.ANY && dialogueStarted == true)
+		if (FlxG.keys.justPressed.ANY || PlayerSettings.player1.controls.ACCEPT && dialogueStarted == true)
 		{
 			remove(dialogue);
 				
