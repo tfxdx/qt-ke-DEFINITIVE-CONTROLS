@@ -31,7 +31,7 @@ class CopyState extends MusicBeatState
 	public var loadingImage:FlxSprite;
 	public var loadingBar:FlxBar;
 	public var loadedText:FlxText;
-	public var copyLoop:FlxAsyncLoop;
+	public var thread:ThreadPool;
 
 	var failedFilesStack:Array<String> = [];
 	var failedFiles:Array<String> = [];
