@@ -61,11 +61,11 @@ class CopyState extends MusicBeatState
 		loadingImage.antialiasing = true;
 		add(loadingImage);
 
-		loadingBar = new FlxBar(0, FlxG.height - 26, FlxBarFillDirection.LEFT_TO_RIGHT, FlxG.width, 26);
-		loadingBar.setRange(0, maxLoopTimes);
-		add(loadingBar);
+		bottomBG = new FlxSprite(0, FlxG.height - 26).makeGraphic(FlxG.width, 26, 0xFF000000);
+		bottomBG.alpha = 0.6;
+		add(bottomBG);
 
-		loadedText = new FlxText(loadingBar.x, loadingBar.y + 4, FlxG.width, '', 16);
+		loadedText = new FlxText(bottomBG.x, bottomBG.y + 4, FlxG.width, '', 16);
 		loadedText.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER);
 		add(loadedText);
 
