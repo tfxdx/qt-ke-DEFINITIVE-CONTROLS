@@ -1,10 +1,10 @@
 package;
 
-#if mobile
 #if sys
 import sys.*;
 import sys.io.*;
 #end
+#if mobile
 import lime.utils.Assets as LimeAssets;
 import openfl.utils.Assets as OpenFLAssets;
 import openfl.utils.ByteArray;
@@ -16,7 +16,6 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import flixel.ui.FlxBar;
 import flixel.ui.FlxBar.FlxBarFillDirection;
-import lime.system.ThreadPool;
 import flixel.addons.util.FlxAsyncLoop;
 
 using StringTools;
