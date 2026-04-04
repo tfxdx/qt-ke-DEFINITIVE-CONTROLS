@@ -214,7 +214,7 @@ class StoryMenuState extends MusicBeatState
 
 		PlayState.cutsceneSkip = false; //Don't ask.
 
-		#if android
+		#if mobile
 		addVirtualPad(FULL, A_B);
 		addPadCamera();
 		#end
