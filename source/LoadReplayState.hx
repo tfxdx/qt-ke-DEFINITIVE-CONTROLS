@@ -93,8 +93,8 @@ class LoadReplayState extends MusicBeatState
 
 		changeSelection(0);
 
-		#if android
-		addVirtualPad(FULL, A_B);
+		#if mobile
+		addVirtualPad(UP_DOWN, A_B);
 		addPadCamera();
 		#end
 
