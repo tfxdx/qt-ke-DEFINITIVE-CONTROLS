@@ -12,7 +12,7 @@ import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.ui.FlxUIState;
 import flixel.math.FlxRect;
 import flixel.util.FlxTimer;
-#if android 
+#if mobile
 import flixel.input.actions.FlxActionInput;
 import mobile.AndroidControls.AndroidControls;
 import mobile.FlxVirtualPad;
@@ -29,13 +29,13 @@ class MusicBeatState extends FlxUIState
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
 
-	#if android
+	#if mobile
 	var _virtualpad:FlxVirtualPad;
 	var androidc:AndroidControls;
 	var trackedinputs:Array<FlxActionInput> = [];
 	#end
 	
-	#if android
+	#if mobile
 	public function addVirtualPad(?DPad:FlxDPadMode, ?Action:FlxActionMode) {
 		_virtualpad = new FlxVirtualPad(DPad, Action);
 		_virtualpad.alpha = 0.75;
@@ -46,9 +46,9 @@ class MusicBeatState extends FlxUIState
 	}
 	#end
 
-	#if android
+	#if mobile
 	public function addAndroidControls() {
-                androidc = new AndroidControls();
+        androidc = new AndroidControls();
 
 		switch (androidc.mode)
 		{
@@ -71,7 +71,7 @@ class MusicBeatState extends FlxUIState
 	}
 	#end
 
-	#if android
+	#if mobile
         public function addPadCamera() {
 		var camcontrol = new flixel.FlxCamera();
 		FlxG.cameras.add(camcontrol);
@@ -81,8 +81,8 @@ class MusicBeatState extends FlxUIState
 	#end
 	
 	override function destroy() {
-		#if android
-		controls.removeFlxInput(trackedinputs);
+		#if mobile
+		Controls.removeFlxInput(trackedinputs);
 		#end	
 		
 		super.destroy();
