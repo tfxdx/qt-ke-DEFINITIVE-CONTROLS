@@ -82,7 +82,7 @@ class MusicBeatState extends FlxUIState
 	
 	override function destroy() {
 		#if mobile
-		Controls.removeFlxInput(trackedinputs);
+		controls.removeFlxInput(trackedinputs);
 		#end	
 		
 		super.destroy();
