@@ -29,7 +29,7 @@ class CopyState extends MusicBeatState
 	public static var maxLoopTimes:Int = 0;
 
 	public var loadingImage:FlxSprite;
-	public var loadingBar:FlxBar;
+	public var bottomBG:FlxSprite;
 	public var loadedText:FlxText;
 	public var copyLoop:FlxAsyncLoop;
 
