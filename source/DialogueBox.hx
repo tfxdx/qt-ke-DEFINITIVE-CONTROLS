@@ -399,7 +399,7 @@ class DialogueBox extends FlxSpriteGroup
 		}
 
 		#if mobile
-		var pressedAnyKey:Bool = FlxG.keys.justPressed.ANY;
+		var pressedAnyKey:Bool = FlxG.keys.justPressed.ENTER;
 
 		for (touch in FlxG.touches.list)
 		{
