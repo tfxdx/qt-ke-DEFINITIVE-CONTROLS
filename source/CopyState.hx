@@ -32,7 +32,7 @@ class CopyState extends MusicBeatState
 	public var loadingImage:FlxSprite;
 	public var loadingBar:FlxBar;
 	public var loadedText:FlxText;
-	public var thread:ThreadPool;
+	public var copyLoop:FlxAsyncLoop;
 
 	var failedFilesStack:Array<String> = [];
 	var failedFiles:Array<String> = [];
@@ -70,28 +70,22 @@ class CopyState extends MusicBeatState
 		loadedText.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER);
 		add(loadedText);
 
-		thread = new ThreadPool(0, CoolUtil.getCPUThreadsCount());
-		thread.doWork.add(function(poop)
-		{
-			for (file in locatedFiles)
-			{
-				loopTimes++;
-				copyAsset(file);
-			}
-		});
-		new FlxTimer().start(0.5, (tmr) ->
-		{
-			thread.queue({});
-		});
+		var ticks:Int = 15;
+		if (maxLoopTimes <= 15)
+			ticks = 1;
+
+		copyLoop = new FlxAsyncLoop(maxLoopTimes, copyAsset, ticks);
+		add(copyLoop);
+		copyLoop.start();
 
 		super.create();
 	}
 
 	override function update(elapsed:Float)
 	{
-		if (shouldCopy)
+		if (shouldCopy && copyLoop != null)
 		{
-			if (loopTimes >= maxLoopTimes && canUpdate)
+			if (copyLoop.finished && canUpdate)
 			{
 				if (failedFiles.length > 0)
 				{
@@ -100,21 +94,16 @@ class CopyState extends MusicBeatState
 						FileSystem.createDirectory('logs');
 					File.saveContent('logs/' + Date.now().toString().replace(' ', '-').replace(':', "'") + '-CopyState' + '.txt', failedFilesStack.join('\n'));
 				}
-				
-				FlxG.sound.play(Paths.sound('confirmMenu')).onComplete = () ->
-				{
+				canUpdate = false;
+				FlxG.sound.play(Paths.sound('confirmMenu')).onComplete = () -> {
 					FlxG.switchState(new TitleState());
 				};
-		
-				canUpdate = false;
 			}
 
-			if (loopTimes >= maxLoopTimes)
+			if (maxLoopTimes == 0)
 				loadedText.text = "Completed!";
 			else
 				loadedText.text = '$loopTimes/$maxLoopTimes';
-
-			loadingBar.percent = Math.min((loopTimes / maxLoopTimes) * 100, 100);
 		}
 		super.update(elapsed);
 	}
