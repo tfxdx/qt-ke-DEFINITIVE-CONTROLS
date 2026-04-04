@@ -399,12 +399,13 @@ class DialogueBox extends FlxSpriteGroup
 		}
 
 		#if mobile
+		var pressedAnyKey:Bool = FlxG.keys.justPressed.ANY;
+
 		for (touch in FlxG.touches.list)
 		{
 			if (touch.justPressed)
 			{
-				startDialogue();
-				dialogueStarted = true;
+				pressedAnyKey = true;
 			}
 		}
 		#end
