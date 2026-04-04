@@ -51,4 +51,8 @@ class CoolUtil
 	{
 		FlxG.stage.window.alert(message, title);
 	}
+	public static function getCPUThreadsCount():Int
+    {
+        return 1;
+    }
 }
