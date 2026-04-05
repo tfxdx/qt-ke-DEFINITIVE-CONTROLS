@@ -1787,10 +1787,6 @@ class PlayState extends MusicBeatState
 		#if mobile
 		addAndroidControls();
 		androidc.visible = true;
-		addPadCamera();
-		_vpad = new FlxVirtualPad(NONE, A);
-	    _vpad.cameras = [camcontrol];
-		this.add(_vpad);
 		#end
 
 		// if (SONG.song == 'South')
