@@ -70,6 +70,10 @@ import Sys;
 import sys.FileSystem;
 #end
 
+#if mobile
+import mobile.FlxVirtualPad;
+#end
+
 using StringTools;
 
 class PlayState extends MusicBeatState
