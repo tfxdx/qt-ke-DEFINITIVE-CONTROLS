@@ -30,6 +30,7 @@ class MusicBeatState extends FlxUIState
 		return PlayerSettings.player1.controls;
 
 	#if mobile
+	var dodgeButton:FlxVirtualPad;
 	var _virtualpad:FlxVirtualPad;
 	var androidc:AndroidControls;
 	var trackedinputs:Array<FlxActionInput> = [];
@@ -64,8 +65,7 @@ class MusicBeatState extends FlxUIState
 		FlxG.cameras.add(camcontrol);
 		camcontrol.bgColor.alpha = 0;
 		androidc.cameras = [camcontrol];
-		
-		var dodgeButton:FlxVirtualPad;
+
 		dodgeButton = new FlxVirtualPad(NONE, A);
 	    dodgeButton.cameras = [camcontrol];
 
