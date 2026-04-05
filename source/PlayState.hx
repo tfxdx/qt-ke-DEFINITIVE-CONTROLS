@@ -259,10 +259,6 @@ class PlayState extends MusicBeatState
 
 	// LUA SHIT
 
-	#if mobile
-	var _vpad:FlxVirtualPad;
-	#end
-
 	#if cpp
 
 	public static var lua:State = null;
