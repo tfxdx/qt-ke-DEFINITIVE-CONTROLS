@@ -1783,6 +1783,7 @@ class PlayState extends MusicBeatState
 		#if mobile
 		addAndroidControls();
 		androidc.visible = true;
+		dodgeButton.visible = true;
 		#end
 
 		// if (SONG.song == 'South')
