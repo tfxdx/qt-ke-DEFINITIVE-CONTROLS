@@ -1787,7 +1787,6 @@ class PlayState extends MusicBeatState
 		FlxG.cameras.add(camcontrol);
 	    _vpad.cameras = [camcontrol];
 		this.add(_vpad);
-        #end	
 		#end
 
 		// if (SONG.song == 'South')
