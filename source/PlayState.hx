@@ -861,10 +861,6 @@ class PlayState extends MusicBeatState
 			}
 			case 'termination': //Seperated the two so terminate can load quicker (doesn't need to load in the attack animations and stuff)
 			{
-				#if mobile
-				dodgeButton.visible = true;
-				#end
-
 				defaultCamZoom = 0.8125;
 				
 				curStage = 'streetFinal';
@@ -1382,9 +1378,6 @@ class PlayState extends MusicBeatState
 			}
 			case 'tutorial': //Tutorial now has the attack functions from Termination so you can call them using modcharts so hopefully people who want to make their own song don't have to go to the source code to manually code in the attack stuff.
 			{
-				#if mobile
-				dodgeButton.visible = true;
-				#end
 				defaultCamZoom = 0.9;
 				curStage = 'stage';
 				var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stageback'));
@@ -4643,6 +4636,9 @@ class PlayState extends MusicBeatState
 		if(SONG.song.toLowerCase() == "termination" || SONG.song.toLowerCase()=='tutorial'){
 			//Dodge code, yes it's bad but oh well. -Haz
 			//var dodgeButton = controls.ACCEPT; //I have no idea how to add custom controls so fuck it. -Haz
+			#if mobile
+			dodgeButton.visible = true;
+			#end
 
 			if(FlxG.keys.justPressed.SPACE || dodgeButton.buttonA.justPressed)
 				trace('butttonpressed');
