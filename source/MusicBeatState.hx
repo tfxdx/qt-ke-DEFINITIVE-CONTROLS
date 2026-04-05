@@ -73,7 +73,7 @@ class MusicBeatState extends FlxUIState
 
 		androidc.visible = false;
 
-		add(dodgeButton)
+		add(dodgeButton);
 		add(androidc);
 	}
 	#end
