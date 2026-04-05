@@ -68,12 +68,12 @@ class MusicBeatState extends FlxUIState
 		var dodgeButton:FlxVirtualPad;
 		dodgeButton = new FlxVirtualPad(NONE, A);
 	    dodgeButton.cameras = [camcontrol];
-		this.add(dodgeButton);
 
 		dodgeButton.visible = false;
 
 		androidc.visible = false;
 
+		add(dodgeButton)
 		add(androidc);
 	}
 	#end
