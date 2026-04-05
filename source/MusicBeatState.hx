@@ -68,6 +68,7 @@ class MusicBeatState extends FlxUIState
 		var _vpad:FlxVirtualPad;
 		_vpad = new FlxVirtualPad(NONE, A);
 	    _vpad.cameras = [camcontrol];
+		this.add(_vpad);
 		
 		androidc.visible = false;
 
