@@ -69,8 +69,8 @@ class CopyState extends MusicBeatState
 		loadedText.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER);
 		add(loadedText);
 
-		var ticks:Int = 15;
-		if (maxLoopTimes <= 15)
+		var ticks:Int = 16;
+		if (maxLoopTimes <= 16)
 			ticks = 1;
 
 		copyLoop = new FlxAsyncLoop(maxLoopTimes, copyAsset, ticks);
