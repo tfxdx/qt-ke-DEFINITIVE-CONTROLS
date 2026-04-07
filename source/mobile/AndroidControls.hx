@@ -16,7 +16,7 @@ class AndroidControls extends FlxSpriteGroup {
 	public function new() {
 		super();
 
-		mode = getModeFromNumber(config.getcontrolmode());
+		mode = getModeFromNumber(0);
 
 		switch (mode) {
 			case HITBOX:
