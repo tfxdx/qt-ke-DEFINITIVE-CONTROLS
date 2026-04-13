@@ -3144,6 +3144,7 @@ class PlayState extends MusicBeatState
 				persistentUpdate = false;
 				persistentDraw = true;
 				paused = true;
+			    dodgeButton.visible = false;
 
 				// 1 / 1000 chance for Gitaroo Man easter egg
 				if (FlxG.random.bool(0.1))
