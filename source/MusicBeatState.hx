@@ -39,7 +39,7 @@ class MusicBeatState extends FlxUIState
 	#if mobile
 	public function addVirtualPad(?DPad:FlxDPadMode, ?Action:FlxActionMode) {
 		_virtualpad = new FlxVirtualPad(DPad, Action);
-		_virtualpad.alpha = 0.75;
+		_virtualpad.alpha = 0.8;
 		add(_virtualpad);
 		controls.setVirtualPad(_virtualpad, DPad, Action);
 		trackedinputs = controls.trackedinputs;
@@ -67,7 +67,7 @@ class MusicBeatState extends FlxUIState
 		androidc.cameras = [camcontrol];
 
 		dodgeButton = new FlxVirtualPad(NONE, A);
-		dodgeButton.alpha = 0.75;
+		dodgeButton.alpha = 0.8;
 	    dodgeButton.cameras = [camcontrol];
 
 		dodgeButton.visible = false;
