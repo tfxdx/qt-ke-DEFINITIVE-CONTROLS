@@ -280,11 +280,11 @@ class Controls extends FlxActionSet
 		action.add(input);
 	}
 
-	public function setHitBox(hitbox:FlxHitbox) {
-		inline forEachBound(Control.UP, (action, state) -> addbutton(action, hitbox.buttonUp, state));
-		inline forEachBound(Control.DOWN, (action, state) -> addbutton(action, hitbox.buttonDown, state));
-		inline forEachBound(Control.LEFT, (action, state) -> addbutton(action, hitbox.buttonLeft, state));
-		inline forEachBound(Control.RIGHT, (action, state) -> addbutton(action, hitbox.buttonRight, state));	
+	public function setHitBox(Hitbox:FlxHitbox) {
+		inline forEachBound(Control.NOTE_UP, (action, state) -> addButtonNOTES(action, Hitbox.buttonUp, state));
+		inline forEachBound(Control.NOTE_DOWN, (action, state) -> addButtonNOTES(action, Hitbox.buttonDown, state));
+		inline forEachBound(Control.NOTE_LEFT, (action, state) -> addButtonNOTES(action, Hitbox.buttonLeft, state));
+		inline forEachBound(Control.NOTE_RIGHT, (action, state) -> addButtonNOTES(action, Hitbox.buttonRight, state));
 	}
 	
 	public function setVirtualPad(virtualPad:FlxVirtualPad, ?DPad:FlxDPadMode, ?Action:FlxActionMode) {
