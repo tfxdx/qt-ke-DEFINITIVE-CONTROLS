@@ -5,12 +5,12 @@ import haxe.io.Path;
 import haxe.Exception;
 
 #if sys
-import sys.*;
-import sys.io.*;
+import sys.FileSystem;
 #end
 
-import android.os.*;
-import android.*;
+import android.os.Environment;
+import android.Settings;
+import android.Permissions;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 
@@ -21,13 +21,13 @@ class StorageUtil {
 		return haxe.io.Path.addTrailingSlash(Environment.getExternalStorageDirectory() + '/.' + lime.app.Application.current.meta.get('file'));
 	public static function requestPermissions():Void
 	{
-		if (AndroidVersion.SDK_INT >= AndroidVersionCode.TIRAMISU)
-			AndroidPermissions.requestPermissions(['READ_MEDIA_IMAGES', 'READ_MEDIA_VIDEO', 'READ_MEDIA_AUDIO', 'READ_MEDIA_VISUAL_USER_SELECTED']);
+		if (VERSION.SDK_INT >= VERSION_CODES.TIRAMISU)
+			Permissions.requestPermissions(['READ_MEDIA_IMAGES', 'READ_MEDIA_VIDEO', 'READ_MEDIA_AUDIO', 'READ_MEDIA_VISUAL_USER_SELECTED']);
 		else
-			AndroidPermissions.requestPermissions(['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE']);
+			Permissions.requestPermissions(['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE']);
 
-		if (!AndroidEnvironment.isExternalStorageManager())
-			AndroidSettings.requestSetting('MANAGE_APP_ALL_FILES_ACCESS_PERMISSION');
+		if (!Environment.isExternalStorageManager())
+			Settings.requestSetting('MANAGE_APP_ALL_FILES_ACCESS_PERMISSION');
 
 		if ((VERSION.SDK_INT >= VERSION_CODES.TIRAMISU
 			&& !Permissions.getGrantedPermissions().contains('android.permission.READ_MEDIA_IMAGES'))
