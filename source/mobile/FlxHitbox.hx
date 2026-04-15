@@ -4,7 +4,7 @@ import flash.display.BitmapData;
 import flash.display.Shape;
 import flixel.FlxG;
 import flixel.group.FlxSpriteGroup;
-import flixel.ui.FlxButton;
+import mobile.FlxButton;
 
 /**
  * A zone with 4 hint's (A hitbox).
