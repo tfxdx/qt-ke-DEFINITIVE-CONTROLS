@@ -20,7 +20,7 @@ using StringTools;
 
 class CopyState extends MusicBeatState
 {
-	private static final textFilesExtensions:Array<String> = ['ini', 'txt', 'xml', 'hxs', 'hx', 'lua', 'json', 'frag', 'vert'];
+	private static final textFilesExtensions:Array<String> = [];
 	public static final IGNORE_FOLDER_FILE_NAME:String = "CopyState-Ignore.txt";
 	private static var directoriesToIgnore:Array<String> = [];
 	public static var locatedFiles:Array<String> = [];
