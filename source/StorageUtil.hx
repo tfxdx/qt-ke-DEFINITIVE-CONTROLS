@@ -9,16 +9,10 @@ import sys.*;
 import sys.io.*;
 #end
 
-#if android
-import android.content.Context as AndroidContext;
-import android.widget.Toast as AndroidToast;
-import android.os.Environment as AndroidEnvironment;
-import android.Permissions as AndroidPermissions;
-import android.Settings as AndroidSettings;
-import android.Tools as AndroidTools;
-import android.os.Build.VERSION as AndroidVersion;
-import android.os.Build.VERSION_CODES as AndroidVersionCode;
-#end
+import android.os.*;
+import android.*;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 
 using StringTools;
 
@@ -43,8 +37,10 @@ class StorageUtil {
 
 		try
 		{
+			#if sys
 			if (!FileSystem.exists(StorageUtil.getStorageDirectory()))
 				FileSystem.createDirectory(StorageUtil.getStorageDirectory());
+			#end
 		}
 		catch (e:Dynamic)
 		{
