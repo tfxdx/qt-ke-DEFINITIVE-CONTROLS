@@ -85,7 +85,7 @@ class FlxHitbox extends FlxSpriteGroup
 		#end
 		return hint;
 	}
-}		hitbox_hint.alpha = 0.75;
+	    hitbox_hint.alpha = 0.75;
 		add(hitbox_hint);
 	}
 
