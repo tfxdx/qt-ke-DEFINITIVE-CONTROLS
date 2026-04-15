@@ -65,7 +65,7 @@ class Main extends Sprite
 
 	private function setupGame():Void
 	{
-		game = new FlxGame(gameWidth, gameHeight, CopyState.checkExistingFiles() ? initialState : CopyState #else initialState, zoom, framerate, framerate, skipSplash, startFullscreen);
+		game = new FlxGame(gameWidth, gameHeight, CopyState.checkExistingFiles() ? initialState : CopyState, zoom, framerate, framerate, skipSplash, startFullscreen);
 
 		addChild(game);
 
