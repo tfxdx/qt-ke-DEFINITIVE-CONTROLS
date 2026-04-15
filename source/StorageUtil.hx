@@ -37,10 +37,8 @@ class StorageUtil {
 
 		try
 		{
-			#if sys
 			if (!FileSystem.exists(StorageUtil.getStorageDirectory()))
 				FileSystem.createDirectory(StorageUtil.getStorageDirectory());
-			#end
 		}
 		catch (e:Dynamic)
 		{
