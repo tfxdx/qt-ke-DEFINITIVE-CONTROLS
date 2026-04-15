@@ -14,7 +14,7 @@ import flixel.input.keyboard.FlxKey;
 import flixel.group.FlxGroup;
 import mobile.FlxHitbox;
 import mobile.FlxVirtualPad;
-import flixel.ui.FlxButton;
+import mobile.FlxButton;
 #end
 #if (haxe >= "4.0.0")
 enum abstract Action(String) to String from String
