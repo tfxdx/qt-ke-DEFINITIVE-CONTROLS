@@ -4,7 +4,6 @@ package;
 import sys.*;
 import sys.io.*;
 #end
-#if mobile
 import lime.utils.Assets as LimeAssets;
 import openfl.utils.Assets as OpenFLAssets;
 import openfl.utils.ByteArray;
@@ -221,4 +220,3 @@ class CopyState extends MusicBeatState
 		return (maxLoopTimes <= 0);
 	}
 }
-#end
