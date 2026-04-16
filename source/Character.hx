@@ -40,7 +40,7 @@ class Character extends FlxSprite
 				animation.addByPrefix('scared', 'GF FEAR', 24);
 
 				addOffset('cheer');
-				addOffset('sad', 0, -9);
+				addOffset('sad', -2, -17);
 				addOffset('danceLeft', 0, -9);
 				addOffset('danceRight', 0, -9);
 
