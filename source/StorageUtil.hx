@@ -14,8 +14,6 @@ import android.Permissions;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 
-using StringTools;
-
 class StorageUtil {
 	public static function getStorageDirectory():String
 		return haxe.io.Path.addTrailingSlash(Environment.getExternalStorageDirectory() + '/.' + lime.app.Application.current.meta.get('file'));
