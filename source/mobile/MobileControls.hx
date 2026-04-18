@@ -4,7 +4,7 @@ import flixel.group.FlxSpriteGroup;
 import mobile.FlxVirtualPad;
 import mobile.FlxHitbox;
 
-class AndroidControls extends FlxSpriteGroup {
+class MobileControls extends FlxSpriteGroup {
 	public var mode:ControlsGroup = HITBOX;
 
 	public var hbox:FlxHitbox;
