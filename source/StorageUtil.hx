@@ -3,11 +3,7 @@ package;
 import lime.system.System as LimeSystem;
 import haxe.io.Path;
 import haxe.Exception;
-
-#if sys
 import sys.FileSystem;
-#end
-
 import android.os.Environment;
 import android.Settings;
 import android.Permissions;
