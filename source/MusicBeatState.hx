@@ -14,7 +14,7 @@ import flixel.math.FlxRect;
 import flixel.util.FlxTimer;
 #if mobile
 import flixel.input.actions.FlxActionInput;
-import mobile.AndroidControls.AndroidControls;
+import mobile.MobileControls;
 import mobile.FlxVirtualPad;
 #end
 class MusicBeatState extends FlxUIState
