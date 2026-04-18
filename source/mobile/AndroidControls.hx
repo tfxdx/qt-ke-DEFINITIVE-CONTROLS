@@ -1,9 +1,6 @@
 package mobile;
 
-import flixel.FlxG;
 import flixel.group.FlxSpriteGroup;
-import flixel.util.FlxSave;
-import flixel.math.FlxPoint;
 import mobile.FlxVirtualPad;
 import mobile.FlxHitbox;
 
