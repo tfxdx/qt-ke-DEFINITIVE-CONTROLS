@@ -272,13 +272,7 @@ class Controls extends FlxActionSet
 	#end
 
 	#if mobile
-	public var trackedinputs:Array<FlxActionInput> = [];	
-
-	public function addbutton(action:FlxActionDigital, button:FlxButton, state:FlxInputState) {
-		var input = new FlxActionInputDigitalIFlxInput(button, state);
-		trackedinputs.push(input);
-		action.add(input);
-	}
+	public var trackedinputs:Array<FlxActionInput> = [];
 
 	public function setHitBox(Hitbox:FlxHitbox) {
 		inline forEachBound(Control.UP, (action, state) -> addbutton(action, Hitbox.buttonUp, state));
@@ -286,38 +280,6 @@ class Controls extends FlxActionSet
 		inline forEachBound(Control.LEFT, (action, state) -> addbutton(action, Hitbox.buttonLeft, state));
 		inline forEachBound(Control.RIGHT, (action, state) -> addbutton(action, Hitbox.buttonRight, state));
 	}
-	
-	public function setVirtualPad(virtualPad:FlxVirtualPad, ?DPad:FlxDPadMode, ?Action:FlxActionMode) {
-		switch (DPad) {
-			case UP_DOWN:
-				inline forEachBound(Control.UP, (action, state) -> addbutton(action, virtualPad.buttonUp, state));
-				inline forEachBound(Control.DOWN, (action, state) -> addbutton(action, virtualPad.buttonDown, state));
-			case LEFT_RIGHT:
-				inline forEachBound(Control.LEFT, (action, state) -> addbutton(action, virtualPad.buttonLeft, state));
-				inline forEachBound(Control.RIGHT, (action, state) -> addbutton(action, virtualPad.buttonRight, state));
-			case UP_LEFT_RIGHT:
-				inline forEachBound(Control.UP, (action, state) -> addbutton(action, virtualPad.buttonUp, state));
-				inline forEachBound(Control.LEFT, (action, state) -> addbutton(action, virtualPad.buttonLeft, state));
-				inline forEachBound(Control.RIGHT, (action, state) -> addbutton(action, virtualPad.buttonRight, state));
-			case FULL:
-				inline forEachBound(Control.UP, (action, state) -> addbutton(action, virtualPad.buttonUp, state));
-				inline forEachBound(Control.DOWN, (action, state) -> addbutton(action, virtualPad.buttonDown, state));
-				inline forEachBound(Control.LEFT, (action, state) -> addbutton(action, virtualPad.buttonLeft, state));
-				inline forEachBound(Control.RIGHT, (action, state) -> addbutton(action, virtualPad.buttonRight, state));	                     
-			case NONE:
-		}
-
-		switch (Action) {
-			case A:
-				inline forEachBound(Control.ACCEPT, (action, state) -> addbutton(action, virtualPad.buttonA, state));
-            case B:
-				inline forEachBound(Control.BACK, (action, state) -> addbutton(action, virtualPad.buttonB, state));
-			case A_B:
-				inline forEachBound(Control.ACCEPT, (action, state) -> addbutton(action, virtualPad.buttonA, state));
-				inline forEachBound(Control.BACK, (action, state) -> addbutton(action, virtualPad.buttonB, state));
-			case NONE:
-		}
-	}	
 
 	public function removeFlxInput(Tinputs) {
 		for (action in this.digitalActions) {
