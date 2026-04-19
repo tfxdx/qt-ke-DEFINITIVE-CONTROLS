@@ -1781,8 +1781,8 @@ class PlayState extends MusicBeatState
 			replayTxt.cameras = [camHUD];
 
 		#if mobile
-		addMobileControls();
-		mobileControls.visible = true;
+		addAndroidControls();
+		androidc.visible = true;
 		#end
 
 		// if (SONG.song == 'South')

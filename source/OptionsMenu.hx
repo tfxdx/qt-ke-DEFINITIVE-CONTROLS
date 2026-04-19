@@ -110,9 +110,9 @@ class OptionsMenu extends MusicBeatState
 	{
 		super.update(elapsed);
 
-			if (controls.BACK || virtualPad.buttonB.justPressed && !isCat)
+			if (controls.BACK && !isCat)
 				FlxG.switchState(new MainMenuState());
-			else if (controls.BACK || virtualPad.buttonB.justPressed)
+			else if (controls.BACK)
 			{
 				isCat = false;
 				grpControls.clear();
@@ -126,9 +126,9 @@ class OptionsMenu extends MusicBeatState
 					}
 				curSelected = 0;
 			}
-			if (controls.UP_P || virtualPad.buttonUp.justPressed)
+			if (controls.UP_P)
 				changeSelection(-1);
-			if (controls.DOWN_P || virtualPad.buttonDown.justPressed)
+			if (controls.DOWN_P)
 				changeSelection(1);
 			
 			if (isCat)

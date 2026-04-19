@@ -3,7 +3,11 @@ package;
 import lime.system.System as LimeSystem;
 import haxe.io.Path;
 import haxe.Exception;
+
+#if sys
 import sys.FileSystem;
+#end
+
 import android.os.Environment;
 import android.Settings;
 import android.Permissions;
@@ -16,9 +20,9 @@ class StorageUtil {
 	public static function requestPermissions():Void
 	{
 		if (VERSION.SDK_INT >= VERSION_CODES.TIRAMISU)
-			Permissions.requestPermission('READ_MEDIA_IMAGES');
+			Permissions.requestPermissions(['READ_MEDIA_IMAGES', 'READ_MEDIA_VIDEO', 'READ_MEDIA_AUDIO', 'READ_MEDIA_VISUAL_USER_SELECTED']);
 		else
-			Permissions.requestPermission('READ_EXTERNAL_STORAGE');
+			Permissions.requestPermissions(['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE']);
 
 		if (!Environment.isExternalStorageManager())
 			Settings.requestSetting('MANAGE_APP_ALL_FILES_ACCESS_PERMISSION');

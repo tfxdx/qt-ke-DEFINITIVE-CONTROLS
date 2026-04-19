@@ -4,7 +4,6 @@ package;
 import Discord.DiscordClient;
 #end
 import flixel.tweens.FlxTween;
-import flixel.FlxCamera;
 import flixel.util.FlxColor;
 import openfl.Lib;
 import Conductor.BPMChangeEvent;
@@ -15,7 +14,7 @@ import flixel.math.FlxRect;
 import flixel.util.FlxTimer;
 #if mobile
 import flixel.input.actions.FlxActionInput;
-import mobile.MobileControls;
+import mobile.AndroidControls.AndroidControls;
 import mobile.FlxVirtualPad;
 #end
 class MusicBeatState extends FlxUIState
@@ -32,54 +31,70 @@ class MusicBeatState extends FlxUIState
 
 	#if mobile
 	var dodgeButton:FlxVirtualPad;
-	var virtualPad:FlxVirtualPad;
-	var mobileControls:MobileControls;
+	var _virtualpad:FlxVirtualPad;
+	var androidc:AndroidControls;
 	var trackedinputs:Array<FlxActionInput> = [];
-
+	#end
+	
+	#if mobile
 	public function addVirtualPad(?DPad:FlxDPadMode, ?Action:FlxActionMode) {
-		virtualPad = new FlxVirtualPad(DPad, Action);
-		virtualPad.alpha = 0.8;
-		add(virtualPad);
+		_virtualpad = new FlxVirtualPad(DPad, Action);
+		_virtualpad.alpha = 0.8;
+		add(_virtualpad);
+		controls.setVirtualPad(_virtualpad, DPad, Action);
+		trackedinputs = controls.trackedinputs;
+		controls.trackedinputs = [];
 	}
+	#end
 
-	public function addMobileControls() {
-        mobileControls = new MobileControls();
+	#if mobile
+	public function addAndroidControls() {
+        androidc = new AndroidControls();
 
-		switch (mobileControls.mode)
+		switch (androidc.mode)
 		{
 			case HITBOX:
-				controls.setHitBox(mobileControls.hbox);
+				controls.setHitBox(androidc.hbox);
 			default:
 		}
 
 		trackedinputs = controls.trackedinputs;
 		controls.trackedinputs = [];
 
-		var camControl = new FlxCamera();
-		FlxG.cameras.add(camControl);
-		camControl.bgColor.alpha = 0;
-		mobileControls.cameras = [camControl];
+		var camcontrol = new flixel.FlxCamera();
+		FlxG.cameras.add(camcontrol);
+		camcontrol.bgColor.alpha = 0;
+		androidc.cameras = [camcontrol];
 
 		dodgeButton = new FlxVirtualPad(NONE, A);
 		dodgeButton.alpha = 0.8;
-	    dodgeButton.cameras = [camControl];
+	    dodgeButton.cameras = [camcontrol];
 
 		dodgeButton.visible = false;
 
-		mobileControls.visible = false;
+		androidc.visible = false;
 
 		add(dodgeButton);
-		add(mobileControls);
+		add(androidc);
 	}
+	#end
 
-    public function addPadCamera() {
-		var camControl = new FlxCamera();
-		FlxG.cameras.add(camControl);
-		camControl.bgColor.alpha = 0;
-		virtualPad.cameras = [camControl];
+	#if mobile
+        public function addPadCamera() {
+		var camcontrol = new flixel.FlxCamera();
+		FlxG.cameras.add(camcontrol);
+		camcontrol.bgColor.alpha = 0;
+		_virtualpad.cameras = [camcontrol];
 	}
 	#end
 	
+	override function destroy() {
+		#if mobile
+		controls.removeFlxInput(trackedinputs);
+		#end	
+		
+		super.destroy();
+	}
 	override function create()
 	{
 		(cast (Lib.current.getChildAt(0), Main)).setFPSCap(FlxG.save.data.fpsCap);
