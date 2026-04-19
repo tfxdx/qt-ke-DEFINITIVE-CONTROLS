@@ -193,28 +193,28 @@ class FreeplayState extends MusicBeatState
 		var downP = controls.DOWN_P;
 		var accepted = controls.ACCEPT;
 
-		if (upP)
+		if (upP || virtualPad.buttonUp.justPressed)
 		{
 			changeSelection(-1);
 		}
-		if (downP)
+		if (downP || virtualPad.buttonDown.justPressed)
 		{
 			changeSelection(1);
 		}
 
 		if(!(songs[curSelected].songName.toLowerCase()=="termination")){	//Only allow the difficulty to be changed if the song isn't termination.
-		if (controls.LEFT_P)
+		if (controls.LEFT_P || virtualPad.buttonLeft.justPressed)
 			changeDiff(-1);
-		if (controls.RIGHT_P)
+		if (controls.RIGHT_P || virtualPad.buttonRight.justPressed)
 			changeDiff(1);
 		}
 
-		if (controls.BACK)
+		if (controls.BACK || virtualPad.buttonB.justPressed)
 		{
 			FlxG.switchState(new MainMenuState());
 		}
 
-		if (accepted)
+		if (accepted || virtualPad.buttonA.justPressed)
 		{
 			if((songs[curSelected].songName.toLowerCase()=='termination') && !(FlxG.save.data.terminationUnlocked)){
 				trace("lmao, access denied idiot!");
