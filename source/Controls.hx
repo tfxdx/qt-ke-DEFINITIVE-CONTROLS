@@ -273,6 +273,12 @@ class Controls extends FlxActionSet
 	#if mobile
 	public var trackedinputs:Array<FlxActionInput> = [];
 
+	public function addbutton(action:FlxActionDigital, button:FlxButton, state:FlxInputState) {
+		var input = new FlxActionInputDigitalIFlxInput(button, state);
+		trackedinputs.push(input);
+		action.add(input);
+	}
+
 	public function setHitBox(Hitbox:FlxHitbox) {
 		inline forEachBound(Control.UP, (action, state) -> addbutton(action, Hitbox.buttonUp, state));
 		inline forEachBound(Control.DOWN, (action, state) -> addbutton(action, Hitbox.buttonDown, state));
