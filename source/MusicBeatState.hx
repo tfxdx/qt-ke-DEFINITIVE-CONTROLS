@@ -4,6 +4,7 @@ package;
 import Discord.DiscordClient;
 #end
 import flixel.tweens.FlxTween;
+import flixel.FlxCamera;
 import flixel.util.FlxColor;
 import openfl.Lib;
 import Conductor.BPMChangeEvent;
@@ -31,60 +32,60 @@ class MusicBeatState extends FlxUIState
 
 	#if mobile
 	var dodgeButton:FlxVirtualPad;
-	var _virtualpad:FlxVirtualPad;
-	var androidc:AndroidControls;
+	var virtualPad:FlxVirtualPad;
+	var mobileControls:MobileControls;
 	var trackedinputs:Array<FlxActionInput> = [];
 	#end
 	
 	#if mobile
 	public function addVirtualPad(?DPad:FlxDPadMode, ?Action:FlxActionMode) {
-		_virtualpad = new FlxVirtualPad(DPad, Action);
-		_virtualpad.alpha = 0.8;
-		add(_virtualpad);
-		controls.setVirtualPad(_virtualpad, DPad, Action);
+		virtualPad = new FlxVirtualPad(DPad, Action);
+		virtualPad.alpha = 0.8;
+		add(virtualPad);
+		controls.setVirtualPad(virtualPad, DPad, Action);
 		trackedinputs = controls.trackedinputs;
 		controls.trackedinputs = [];
 	}
 	#end
 
 	#if mobile
-	public function addAndroidControls() {
-        androidc = new AndroidControls();
+	public function addMobileControls() {
+        mobileControls = new MobileControls();
 
-		switch (androidc.mode)
+		switch (mobileControls.mode)
 		{
 			case HITBOX:
-				controls.setHitBox(androidc.hbox);
+				controls.setHitBox(mobileControls.hbox);
 			default:
 		}
 
 		trackedinputs = controls.trackedinputs;
 		controls.trackedinputs = [];
 
-		var camcontrol = new flixel.FlxCamera();
-		FlxG.cameras.add(camcontrol);
-		camcontrol.bgColor.alpha = 0;
-		androidc.cameras = [camcontrol];
+		var camControl = new FlxCamera();
+		FlxG.cameras.add(camControl);
+		camControl.bgColor.alpha = 0;
+		mobileControls.cameras = [camControl];
 
 		dodgeButton = new FlxVirtualPad(NONE, A);
 		dodgeButton.alpha = 0.8;
-	    dodgeButton.cameras = [camcontrol];
+	    dodgeButton.cameras = [camControl];
 
 		dodgeButton.visible = false;
 
-		androidc.visible = false;
+		mobileControls.visible = false;
 
 		add(dodgeButton);
-		add(androidc);
+		add(mobileControls);
 	}
 	#end
 
 	#if mobile
         public function addPadCamera() {
-		var camcontrol = new flixel.FlxCamera();
-		FlxG.cameras.add(camcontrol);
-		camcontrol.bgColor.alpha = 0;
-		_virtualpad.cameras = [camcontrol];
+		var camControl = new FlxCamera();
+		FlxG.cameras.add(camControl);
+		camControl.bgColor.alpha = 0;
+		virtualPad.cameras = [camControl];
 	}
 	#end
 	
