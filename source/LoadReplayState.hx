@@ -138,15 +138,15 @@ class LoadReplayState extends MusicBeatState
 	{
 		super.update(elapsed);
 
-			if (controls.BACK)
+			if (controls.BACK || virtualPad.buttonB.justPressed)
 				FlxG.switchState(new OptionsMenu());
-			if (controls.UP_P)
+			if (controls.UP_P || virtualPad.buttonUp.justPressed)
 				changeSelection(-1);
-			if (controls.DOWN_P)
+			if (controls.DOWN_P || virtualPad.buttonDown.justPressed)
 				changeSelection(1);
 		
 
-			if (controls.ACCEPT && grpControls.members[curSelected].text != "No Replays...")
+			if (controls.ACCEPT || virtualPad.buttonA.justPressed && grpControls.members[curSelected].text != "No Replays...")
 			{
                 trace('loading ' + actualNames[curSelected]);
                 PlayState.rep = Replay.LoadReplay(actualNames[curSelected]);
