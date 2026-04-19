@@ -28,35 +28,21 @@ class MusicBeatSubstate extends FlxSubState
 	#if mobile
 	var virtualPad:FlxVirtualPad;
 	var trackedinputs:Array<FlxActionInput> = [];
-	#end
-	
-	#if mobile
+
 	public function addVirtualPad(?DPad:FlxDPadMode, ?Action:FlxActionMode) {
 		virtualPad = new FlxVirtualPad(DPad, Action);
 		virtualPad.alpha = 0.8;
 		add(virtualPad);
-		controls.setVirtualPad(virtualPad, DPad, Action);
-		trackedinputs = controls.trackedinputs;
-		controls.trackedinputs = [];
 	}
-	#end
 
-	#if mobile
-        public function addPadCamera() {
+	public function addPadCamera() {
 		var camControl = new FlxCamera();
 		FlxG.cameras.add(camControl);
 		camControl.bgColor.alpha = 0;
 		virtualPad.cameras = [camControl];
 	}
 	#end
-	
-	override function destroy() {
-		#if mobile
-		controls.removeFlxInput(trackedinputs);	
-		#end	
-		
-		super.destroy();
-	}
+
 	override function update(elapsed:Float)
 	{
 		//everyStep();
