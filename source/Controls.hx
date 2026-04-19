@@ -13,7 +13,6 @@ import flixel.input.keyboard.FlxKey;
 #if mobile
 import flixel.group.FlxGroup;
 import mobile.FlxHitbox;
-import mobile.FlxVirtualPad;
 import mobile.FlxButton;
 #end
 #if (haxe >= "4.0.0")
