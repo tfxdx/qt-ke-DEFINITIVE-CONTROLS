@@ -122,6 +122,7 @@
 	<haxelib name="polymod"/>
 	<haxelib name="discord_rpc" if="windows"/>
 	<haxelib name="linc_luajit"/>
+	<haxelib name="extension-androidtools"/>
 
 	<!-- <haxelib name="hxcpp-debug-server" if="desktop"/> -->
 
