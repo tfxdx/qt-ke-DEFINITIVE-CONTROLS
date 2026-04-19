@@ -35,17 +35,13 @@ class MusicBeatState extends FlxUIState
 	var virtualPad:FlxVirtualPad;
 	var mobileControls:MobileControls;
 	var trackedinputs:Array<FlxActionInput> = [];
-	#end
-	
-	#if mobile
+
 	public function addVirtualPad(?DPad:FlxDPadMode, ?Action:FlxActionMode) {
 		virtualPad = new FlxVirtualPad(DPad, Action);
 		virtualPad.alpha = 0.8;
 		add(virtualPad);
 	}
-	#end
 
-	#if mobile
 	public function addMobileControls() {
         mobileControls = new MobileControls();
 
@@ -75,10 +71,8 @@ class MusicBeatState extends FlxUIState
 		add(dodgeButton);
 		add(mobileControls);
 	}
-	#end
 
-	#if mobile
-        public function addPadCamera() {
+    public function addPadCamera() {
 		var camControl = new FlxCamera();
 		FlxG.cameras.add(camControl);
 		camControl.bgColor.alpha = 0;
