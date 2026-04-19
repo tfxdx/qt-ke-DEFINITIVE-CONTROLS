@@ -16,9 +16,9 @@ class StorageUtil {
 	public static function requestPermissions():Void
 	{
 		if (VERSION.SDK_INT >= VERSION_CODES.TIRAMISU)
-			Permissions.requestPermission(['READ_MEDIA_IMAGES']);
+			Permissions.requestPermission('READ_MEDIA_IMAGES');
 		else
-			Permissions.requestPermission(['READ_EXTERNAL_STORAGE']);
+			Permissions.requestPermission('READ_EXTERNAL_STORAGE');
 
 		if (!Environment.isExternalStorageManager())
 			Settings.requestSetting('MANAGE_APP_ALL_FILES_ACCESS_PERMISSION');
