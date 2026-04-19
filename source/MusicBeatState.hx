@@ -42,9 +42,6 @@ class MusicBeatState extends FlxUIState
 		virtualPad = new FlxVirtualPad(DPad, Action);
 		virtualPad.alpha = 0.8;
 		add(virtualPad);
-		controls.setVirtualPad(virtualPad, DPad, Action);
-		trackedinputs = controls.trackedinputs;
-		controls.trackedinputs = [];
 	}
 	#end
 
@@ -90,10 +87,6 @@ class MusicBeatState extends FlxUIState
 	#end
 	
 	override function destroy() {
-		#if mobile
-		controls.removeFlxInput(trackedinputs);
-		#end	
-		
 		super.destroy();
 	}
 	override function create()
