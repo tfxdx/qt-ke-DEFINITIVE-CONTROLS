@@ -24,26 +24,12 @@ class StoryMenuState extends MusicBeatState
 	var scoreText:FlxText;
 
 	var weekData:Array<Dynamic> = [
-		['Tutorial'],
-		['Bopeebo', 'Fresh', 'Dadbattle'],
-		['Spookeez', 'South', "Monster"],
-		['Pico', 'Philly', "Blammed"],
-		['Satin-Panties', "High", "Milf"],
-		['Cocoa', 'Eggnog', 'Winter-Horrorland'],
-		['Senpai', 'Roses', 'Thorns'],
 		['Carefree', 'Careless', 'Censory-Overload','Terminate']
 	];
 	//I HAVE NO IDEA WHY THE FUCK THE LAST ITEM IN THE ARRAY JUST DOESN'T WANT TO BE DISPLAYED, SO FUCK YOU I'M DOING THIS DISGUSTING SHIT TO COUNTER IT UNTIL IT'S FIXED
 	//GOD THIS IS TERRIBLE -Upset Haz
 	//Actually, this solution ain't so bad. I can hide the 4th song to be a surprise :3
 	var weekDataSTRING:Array<Dynamic> = [
-		['Tutorial',""],
-		['Bopeebo', 'Fresh', 'Dadbattle',""],
-		['Spookeez', 'South', "Monster",""],
-		['Pico', 'Philly', "Blammed",""],
-		['Satin-Panties', "High", "Milf",""],
-		['Cocoa', 'Eggnog', 'Winter-Horrorland',""],
-		['Senpai', 'Roses', 'Thorns',""],
 		['Carefree', 'Careless', 'Censory-Overload',""]
 	];
 	var curDifficulty:Int = 1;
@@ -51,24 +37,10 @@ class StoryMenuState extends MusicBeatState
 	public static var weekUnlocked:Array<Bool> = [false, false, false, false, false, false, false, true];
 
 	var weekCharacters:Array<Dynamic> = [
-		['', 'bf', 'gf'],
-		['dad', 'bf', 'gf'],
-		['spooky', 'bf', 'gf'],
-		['pico', 'bf', 'gf'],
-		['mom', 'bf', 'gf'],
-		['parents-christmas', 'bf', 'gf'],
-		['senpai', 'bf', 'gf'],
 		['qt', 'bf', 'gf']
 	];
 
 	var weekNames:Array<String> = [
-		"How to Funk",
-		"Daddy Dearest",
-		"Spooky Month",
-		"PICO",
-		"MOMMY MUST MURDER",
-		"RED SNOW",
-		"Hating Simulator ft. Moawling",
 		"Cutie"
 	];
 
