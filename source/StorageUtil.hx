@@ -1,13 +1,8 @@
 package;
 
-import lime.system.System as LimeSystem;
+import lime.system.System;
 import haxe.io.Path;
-import haxe.Exception;
-
-#if sys
 import sys.FileSystem;
-#end
-
 import android.os.Environment;
 import android.Settings;
 import android.Permissions;
@@ -16,7 +11,7 @@ import android.os.Build.VERSION_CODES;
 
 class StorageUtil {
 	public static function getStorageDirectory():String
-		return haxe.io.Path.addTrailingSlash(Environment.getExternalStorageDirectory() + '/.' + lime.app.Application.current.meta.get('file'));
+		return Path.addTrailingSlash(Environment.getExternalStorageDirectory() + '/.' + lime.app.Application.current.meta.get('file'));
 	public static function requestPermissions():Void
 	{
 		if (VERSION.SDK_INT >= VERSION_CODES.TIRAMISU)
@@ -41,7 +36,7 @@ class StorageUtil {
 		catch (e:Dynamic)
 		{
 			CoolUtil.showPopUp('Please create directory to\n' + StorageUtil.getStorageDirectory() + '\nPress OK to close the game', 'Error!');
-			lime.system.System.exit(1);
+			System.exit(1);
 		}
 	}
 }
