@@ -23,7 +23,7 @@ jobs:
           haxelib install hscript-ex
           haxelib install polymod 1.5.2
           haxelib git hxcpp https://github.com/kittycathy233/hxcpp
-          haxelib git lime https://github.com/kittycathy233/lime        
+          haxelib git lime https://github.com/garfieldel/lime        
           haxelib git linc_luajit https://github.com/andreirudenko/linc_luajit
           haxelib git faxe https://github.com/ashea-code/faxe
           haxelib git discord_rpc https://github.com/aidan63/linc_discord-rpc
